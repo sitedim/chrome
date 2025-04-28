@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>⚠️ DEMO DATA VIEWER</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        .data-box { background: #f9f9f9; border: 1px dashed #ccc; padding: 20px; margin: 20px auto; max-width: 500px; border-radius: 5px; }
+        .warning { color: red; }
+    </style>
+</head>
+<body>
+    <h1>⚠️ DEMO DATA VIEWER</h1>
+    <p class="warning">This is a simulation. No data was sent to any server.</p>
+    
+    <div class="data-box">
+        <h3>Temporary Data Storage (LocalStorage)</h3>
+        <p><strong>Email:</strong> <span id="storedEmail"></span></p>
+        <p><strong>Password:</strong> <span id="storedPassword"></span></p>
+    </div>
+
+    <p><a href="index.html">Back to demo</a></p>
+
+    <script>
+        // Display stored data (then clear it)
+        document.getElementById("storedEmail").textContent = localStorage.getItem("demo_email") || "[empty]";
+        document.getElementById("storedPassword").textContent = localStorage.getItem("demo_password") || "[empty]";
+        localStorage.clear(); // Delete after showing
+    </script>
+</body>
+</html>
