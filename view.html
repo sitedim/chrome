@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>⚠️ DEMO DATA VIEWER</title>
+    <title>⚠️ DEMO - View Stored Data</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-        .data-box { background: #f9f9f9; border: 1px dashed #ccc; padding: 20px; margin: 20px auto; max-width: 500px; border-radius: 5px; }
-        .warning { color: red; }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .data-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .warning {
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        pre {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body>
-    <h1>⚠️ DEMO DATA VIEWER</h1>
+    <h1>⚠️ SECURITY DEMO</h1>
     <p class="warning">This is a simulation. No data was sent to any server.</p>
     
     <div class="data-box">
-        <h3>Temporary Data Storage (LocalStorage)</h3>
-        <p><strong>Email:</strong> <span id="storedEmail"></span></p>
-        <p><strong>Password:</strong> <span id="storedPassword"></span></p>
+        <h2>Temporarily Stored Data</h2>
+        <p>The browser stored this data locally using localStorage:</p>
+        <pre id="dataOutput">Loading data...</pre>
     </div>
 
-    <p><a href="index.html">Back to demo</a></p>
+    <p><a href="index.html">Return to demo login</a></p>
 
     <script>
-        // Display stored data (then clear it)
-        document.getElementById("storedEmail").textContent = localStorage.getItem("demo_email") || "[empty]";
-        document.getElementById("storedPassword").textContent = localStorage.getItem("demo_password") || "[empty]";
-        localStorage.clear(); // Delete after showing
+        // Display data from localStorage
+        const email = localStorage.getItem('demo_email') || 'No email entered';
+        const password = localStorage.getItem('demo_password') || 'No password entered';
+        
+        document.getElementById('dataOutput').textContent = 
+            `Email: ${email}\nPassword: ${password}\n\n` +
+            `This data is stored ONLY in your browser and will be cleared when you close this page.`;
+        
+        // Clear the data after showing it
+        localStorage.removeItem('demo_email');
+        localStorage.removeItem('demo_password');
     </script>
 </body>
 </html>
