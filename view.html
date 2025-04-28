@@ -1,60 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>⚠️ DEMO - View Stored Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Demonstration | Data Review</title>
     <style>
+        :root {
+            --primary: #4285F4;
+            --danger: #EA4335;
+            --gray: #f8f9fa;
+            --dark-gray: #dadce0;
+            --text: #3c4043;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            font-family: 'Google Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--gray);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .data-box {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        .warning {
-            color: #d32f2f;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        pre {
+        
+        header {
             background: white;
-            padding: 10px;
+            padding: 16px 24px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            height: 24px;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 24px;
+            flex: 1;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .alert {
+            background: #fef7f7;
+            border-left: 4px solid var(--danger);
+            padding: 16px;
+            margin: 24px 0;
+        }
+        
+        .data-display {
+            background: var(--gray);
+            border: 1px solid var(--dark-gray);
             border-radius: 4px;
-            overflow-x: auto;
+            padding: 16px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 16px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #5f6368;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>⚠️ SECURITY DEMO</h1>
-    <p class="warning">This is a simulation. No data was sent to any server.</p>
+    <header>
+        <img src="https://www.gstatic.com/images/branding/product/1x/admin_512dp.png" class="logo" alt="Security Demo">
+    </header>
     
-    <div class="data-box">
-        <h2>Temporarily Stored Data</h2>
-        <p>The browser stored this data locally using localStorage:</p>
-        <pre id="dataOutput">Loading data...</pre>
-    </div>
-
-    <p><a href="index.html">Return to demo login</a></p>
+    <main>
+        <div class="card">
+            <h1>Security Demonstration</h1>
+            
+            <div class="alert">
+                <strong>⚠️ Important Notice:</strong> This is a simulated security demonstration. No data has been transmitted or stored permanently.
+            </div>
+            
+            <h2>Captured Demonstration Data</h2>
+            <p>For educational purposes, this page demonstrates how login forms could potentially capture user input:</p>
+            
+            <div class="data-display" id="demoData">
+                No demonstration data available
+            </div>
+            
+            <p>In a real phishing attempt, this information could be sent to an attacker. Always verify URLs before entering credentials.</p>
+            
+            <a href="index.html" class="btn">Return to Demonstration</a>
+        </div>
+        
+        <div class="card">
+            <h2>Security Best Practices</h2>
+            <ul>
+                <li>Always check the website URL before logging in</li>
+                <li>Look for HTTPS and a valid certificate</li>
+                <li>Use two-factor authentication where available</li>
+                <li>Never reuse passwords across sites</li>
+                <li>Consider using a password manager</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>This security demonstration is for educational purposes only.</p>
+        <p>No data is collected or stored on any server.</p>
+    </footer>
 
     <script>
-        // Display data from localStorage
-        const email = localStorage.getItem('demo_email') || 'No email entered';
-        const password = localStorage.getItem('demo_password') || 'No password entered';
-        
-        document.getElementById('dataOutput').textContent = 
-            `Email: ${email}\nPassword: ${password}\n\n` +
-            `This data is stored ONLY in your browser and will be cleared when you close this page.`;
-        
-        // Clear the data after showing it
-        localStorage.removeItem('demo_email');
-        localStorage.removeItem('demo_password');
+        document.addEventListener('DOMContentLoaded', function() {
+            const email = localStorage.getItem('demo_email') || '[no email entered]';
+            const password = localStorage.getItem('demo_password') || '[no password entered]';
+            
+            document.getElementById('demoData').textContent = 
+                `Email: ${email}\nPassword: ${password}\n\n` +
+                `This data was stored temporarily in your browser's localStorage and has now been cleared.`;
+            
+            // Clear the demonstration data
+            localStorage.removeItem('demo_email');
+            localStorage.removeItem('demo_password');
+        });
     </script>
 </body>
 </html>
